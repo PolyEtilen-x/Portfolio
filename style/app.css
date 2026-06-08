@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @import "tailwindcss";
+
+:root {
+  --primary-glow: radial-gradient(rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0));
+  --secondary-glow: linear-gradient(to bottom right, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.05));
+}
 
 .bebas-neue {
   font-family: "Bebas Neue", sans-serif;
@@ -21,9 +26,51 @@
   font-style: normal;
 }
 
-
 body {
-  background-color: #0A0A0A;
-  color: #C7C7C7;
-  
+  background-color: #07090e;
+  color: #E2E8F0;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(14, 165, 233, 0.06) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #151a22;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #253040;
+}
+
+/* Card Glow Effect */
+.glow-card {
+  position: relative;
+  background: rgba(10, 15, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Active Nav Glow */
+.nav-link-active {
+  color: #06b6d4;
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
 }

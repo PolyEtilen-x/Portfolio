@@ -1,127 +1,141 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import prj1 from '../assets/prj1.png';
+import prj2 from '../assets/prj2.png';
 
 const projects = [
   {
-    title: 'Promotional landing page for our favorite show',
+    title: 'BandBuilder — IELTS Speaking AI Assessment Platform',
     description:
-      'This project is a vibrant and animated landing page showcasing the branding of a fictional TV show. It was built with accessibility and responsiveness in mind.',
-    image: 'https://res.cloudinary.com/dqqectes0/image/upload/v1747941904/project1_ttzclg.svg',
-    tags: ['Creative Work'],
+      'A comprehensive, full-stack IELTS Speaking practice ecosystem. Consists of a responsive Web Client with 16kHz audio downsampling and VAD (Voice Activity Detection), a cross-platform Mobile App with local vocabulary decks sync, and a FastAPI & NestJS AI backend microservice integrated with faster-whisper speech-to-text and Microsoft Edge Neural TTS voice generators.',
+    image: prj1,
+    tags: ['Full Stack & AI', 'React & React Native', 'NestJS & FastAPI'],
     projectInfo: {
-      role: 'Web Design',
-      year: '2022',
-      team: 'Frontend Developer',
+      role: 'Full Stack Developer',
+      year: '2026',
+      team: 'Full-Stack Team',
     },
     links: {
-      live: '#',
-      source: '#',
+      live: 'https://bandbuilder.site',
+      source: 'https://github.com/PolyEtilen-x/BandBuilder_FE',
+      details: '/project/bandbuilder'
     },
   },
   {
-    title: 'Blog site for World News',
+    title: 'Learnity — Community Learning & Collaboration Platform',
     description:
-      'An elegant news blog with categories, images, and responsive layout. Built using React and Tailwind CSS for a modern news experience.',
-    image: 'https://res.cloudinary.com/dqqectes0/image/upload/v1747941904/project2_uttsae.svg',
-    tags: ['Client Work'],
+      'A community learning application enabling students to share assignments, participate in academic discussions, and study collaboratively. Integrates OAuth2 secure sign-in, Firestore-based real-time data sync for questions and messages, Firebase Cloud Messaging (FCM) push notifications, and live voice/video calls via ZegoCloud SDK.',
+    image: prj2,
+    tags: ['ReactJS', 'FireStoreDB', 'Mobile Development', 'Flutter & NestJS', 'Real-time Web'],
     projectInfo: {
-      role: 'React Dev',
-      year: '2023',
-      team: 'Frontend Developer',
+      role: 'Full Stack Developer',
+      year: '2025',
+      team: '4-member Team',
     },
     links: {
-      live: '#',
-      source: '#',
+      source: 'https://github.com/PolyEtilen-x/Learnity_Reactjs',
+      details: '/project/learnity'
     },
-  },
-  {
-    title: 'E-commerce product page',
-    description:
-      'A responsive e-commerce landing page focusing on product features and cart flow. Built with accessibility in mind.',
-    image: 'https://res.cloudinary.com/dqqectes0/image/upload/v1747941904/project3_rnl4gg.svg',
-    tags: ['Client Work'],
-    projectInfo: {
-      role: 'UI/UX Design',
-      year: '2022',
-      team: 'Frontend Developer',
-    },
-    links: {
-      live: '#',
-      source: '#',
-    },
-  },
+  }
 ];
 
 const FeaturedProjects = () => {
   return (
-    <section className="bg-white text-black px-6 md:px-16 py-20" id="projects">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">FEATURED PROJECTS</h2>
-      <p className="text-gray-500 mb-10 max-w-xl">
-        Here are some of the selected projects that showcase my passion for design and development.
-      </p>
+    <section className="px-6 md:px-16 py-28 relative overflow-hidden" id="projects">
+      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-cyan-950/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-      <div className="space-y-16">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="flex flex-col md:flex-row gap-8 border-2 border-slate-800 rounded-xl p-6"
-          >
-            {/* Image */}
-            <div className="flex-shrink-0 w-full md:w-[300px] h-auto">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full rounded-md"
-              />
-            </div>
+      <div className="max-w-6xl mx-auto space-y-12">
+        <div className="space-y-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400">
+            Featured Projects
+          </h2>
+          <div className="h-1 w-20 bg-cyan-500 rounded"></div>
+          <p className="text-zinc-400 text-base md:text-lg max-w-xl pt-2">
+            Here are some of the selected projects that showcase my passion for design and development.
+          </p>
+        </div>
 
-            {/* Text Content */}
-            <div className="flex flex-col justify-between flex-1">
-              <div>
-                <span className="text-sm text-slate-800 font-semibold uppercase tracking-wider">
-                  {project.tags.join(', ')}
-                </span>
-                <h3 className="text-xl font-semibold mt-2 mb-4">{project.title}</h3>
-                <p className="text-gray-500 mb-6">{project.description}</p>
+        <div className="space-y-12">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="glow-card flex flex-col md:flex-row gap-8 rounded-2xl p-6 md:p-8 hover:border-cyan-500/40"
+            >
+              {/* Image Container */}
+              <div className="flex-shrink-0 w-full md:w-[350px] bg-zinc-950/50 rounded-xl border border-zinc-800/60 overflow-hidden flex items-center justify-center p-4">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto rounded-lg object-contain hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
+              {/* Text Content */}
+              <div className="flex flex-col justify-between flex-1 space-y-6">
+                <div className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="inline-block px-3 py-1 bg-cyan-950/50 border border-cyan-800/40 text-cyan-300 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white leading-tight">{project.title}</h3>
+                  <p className="text-zinc-400 text-base leading-relaxed">{project.description}</p>
+                </div>
 
-              <div className="text-sm text-gray-500 mb-4">
-                <div className="mb-2">PROJECT INFO:</div>
-                <div className="grid grid-cols-2 gap-y-1">
-                  <div>Role</div>
-                  <div className="text-right">{project.projectInfo.role}</div>
-                  <hr className='col-span-2 w-full my-2' />
-                  <div>Year</div>
-                  <div className="text-right">{project.projectInfo.year}</div>
-                  <hr className='col-span-2 w-full my-2' />
-                  <div>Team</div>
-                  <div className="text-right">{project.projectInfo.team}</div>
-                  <hr className='col-span-2 w-full my-2' />
+                {/* Project Metadata Table */}
+                <div className="text-sm text-zinc-400 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/40">
+                  <div className="font-semibold text-zinc-300 tracking-wide mb-3 uppercase text-xs">
+                    Project Info
+                  </div>
+                  <div className="grid grid-cols-2 gap-y-2 text-zinc-300">
+                    <div className="text-zinc-500">Role</div>
+                    <div className="text-right font-medium">{project.projectInfo.role}</div>
+                    <hr className="col-span-2 border-zinc-800/60" />
+                    <div className="text-zinc-500">Year</div>
+                    <div className="text-right font-medium">{project.projectInfo.year}</div>
+                    <hr className="col-span-2 border-zinc-800/60" />
+                    <div className="text-zinc-500">Team</div>
+                    <div className="text-right font-medium">{project.projectInfo.team}</div>
+                  </div>
+                </div>
+
+                {/* Links */}
+                <div className="flex flex-wrap gap-6 text-sm font-semibold pt-2">
+                  {project.links.live && (
+                    <a
+                      href={project.links.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 transition duration-300"
+                    >
+                      LIVE DEMO <span className="text-xs">↗</span>
+                    </a>
+                  )}
+                  {project.links.details && project.links.details !== '#' && (
+                    <Link
+                      to={project.links.details}
+                      className="flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 transition duration-300"
+                    >
+                      CASE STUDY / DETAILS <span className="text-xs">↗</span>
+                    </Link>
+                  )}
+                  {project.links.source && (
+                    <a
+                      href={project.links.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition duration-300"
+                    >
+                      SEE ON GITHUB <span className="text-xs">↗</span>
+                    </a>
+                  )}
                 </div>
               </div>
-
-
-              <div className="flex gap-4 text-sm text-slate-800">
-                <a
-                  href={project.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold hover:underline"
-                >
-                  LIVE DEMO ↗
-                </a>
-                <a
-                  href={project.links.source}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold hover:underline"
-                >
-                  SEE ON GITHUB ↗
-                </a>
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
